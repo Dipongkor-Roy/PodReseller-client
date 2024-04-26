@@ -9,7 +9,7 @@ const Slider = () => {
   
   return (
     <div className="lg:mx-[70px] mx-[30px] rounded-md text-base-content">
-      <h1 className='sm:text-3xl font-gabarito title-font  text-gray-600 text-center font-extrabold text-4xl md:text-5xl tracking-tight mb-12 md:my-10'>Want Best Deals?</h1>
+      <h1 className='sm:text-3xl font-gabarito title-font bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent text-center font-extrabold text-4xl md:text-5xl tracking-tight mb-12 md:my-10'>Want Best Deals?</h1>
     
     
      <Carousel className=" shadow-lg md:border md:p-2 md:rounded-2xl bg-orange-200/70 ">

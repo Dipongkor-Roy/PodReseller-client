@@ -11,10 +11,9 @@ const Navbar = () => {
     { path: "/blog", text: "Blog" },
   ];
   return (
-    <div className="">
-      {" "}
+    
       <div
-        className={`rounded-xl navbar bg-base-100 h-16 sticky top-0 z-50 transition-shadow ${
+        className={`navbar rounded-lg bg-base-100 h-16 sticky top-0 z-50 transition-shadow ${
           scrollPos > 0
             ? "shadow bg-opacity-50 backdrop-blur-lg backdrop-filter"
             : "shadow-none"
@@ -146,7 +145,7 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-    </div>
+
   );
 };
 
