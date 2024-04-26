@@ -15,6 +15,9 @@ const Products = () => {
           
           </div>
         </div>
+        <div className="text-center py-3 my-[45px]">
+        <button className="btn btn-md rounded-2xl bg-orange-200 text-gray-500">All Products</button>
+        </div>
       </section>
     );
 };
