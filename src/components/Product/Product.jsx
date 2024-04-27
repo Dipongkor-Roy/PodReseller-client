@@ -1,14 +1,18 @@
 /* eslint-disable react/prop-types */
 
-import { useState } from "react";
+import { useContext } from "react";
 import { FcApproval } from "react-icons/fc";
+import useCart from "../../Hooks/useCart";
 import Swal from "sweetalert2";
+import { useLocation } from "react-router-dom";
+import { AuthContext } from "../../Context/AuthContext";
 const Product = ({ product }) => {
   //  console.log(product)
 
   const {
     category,
     name,
+    _id,
     description,
     image,
     location,
@@ -17,24 +21,83 @@ const Product = ({ product }) => {
     seller_name,
     verified,
   } = product;
-  const user = useState(true); //todo connect to auth
+  const {user }=useContext(AuthContext) ;
+  const navigate=useLocation(); //todo connect to auth
   const Toast = Swal.mixin({
     toast: true,
     position: "top-end",
     showConfirmButton: false,
-    timer: 3000,
+    timer: 1000,
     timerProgressBar: true,
     didOpen: (toast) => {
       toast.onmouseenter = Swal.stopTimer;
       toast.onmouseleave = Swal.resumeTimer;
     }
   });
+  const swalWithBootstrapButtons = Swal.mixin({
+    customClass: {
+      confirmButton: "btn btn-success",
+      cancelButton: "btn btn-danger"
+    },
+    buttonsStyling: false
+  });
+  const [,refetch]=useCart();
   const handleAddtoCart = (product) => {
     console.log(product, user);
-    Toast.fire({
-      icon: "success",
-      title: "Added To The Cart"
-    }); 
+    if (user && user.email) {
+      const productInfo = {
+        productItem: _id,
+        name,
+        image,
+        resale_price,
+        email: user.email
+      };
+
+      fetch('http://localhost:3000/carts', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(productInfo)
+      }).then((res) => res.json()
+      ).then((data) => {
+        console.log(data)
+       if(data.acknowledged){ //important for inserting data to cart
+        refetch();
+        Toast.fire({
+          icon: "success",
+          title: "Added To The Cart"
+        }); 
+       }
+       else{
+        Swal.fire({
+          title: "Please Login To Take Services",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "LogIn!",
+        })
+        .then((result) => {
+          if (result.isConfirmed) {
+            navigate("/logIn",{state:{from: location}});
+          }
+        });
+       }
+      });
+    } else{
+      swalWithBootstrapButtons.fire({
+        title: "Cancelled",
+        text: "Please LogIn To Add To Cart",
+        icon: "error"
+      }).then((result) => {
+        // Check if the user clicked "OK"
+        if (result.isConfirmed) {
+          // Navigate to a different page
+          navigate("/logIn");
+        }
+      });
+    }
 
   };
   return (

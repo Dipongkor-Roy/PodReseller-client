@@ -1,5 +1,5 @@
-
 import { useForm } from "react-hook-form";
+import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { useContext } from "react";
@@ -8,27 +8,50 @@ import Swal from "sweetalert2";
 
 const SignUp = () => {
   const { register, handleSubmit, reset } = useForm();
-  const axiosPublic=useAxiosPublic();
-  const {signUp,updateUserProfile}=useContext(AuthContext)
-  
-  const navigate=useNavigate();
+  const axiosPublic = useAxiosPublic();
+  const { signUp, updateUserProfile, googleSignIn } = useContext(AuthContext);
 
+  const navigate = useNavigate();
+  //signin via google method
+  const googleIn = () => {
+    googleSignIn().then((result) => {
+      const user = result.user;
+      const userInfo = {
+        name: user.displayName,
+        email: user.email,
+        seller: false,
+        buyer: true,
+      };
+      axiosPublic.post("/users", userInfo).then((res) => {
+        if (res.data.insertedId) {
+          reset();
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "User Created Sucessfully",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
+      navigate("/");
+    });
+  };
+  //signin via onsubmit
   const onSubmitSignUp = (data) => {
     console.log(data);
-    reset();
-    signUp(data.email,data.password)
-    .then(result=>{
-      const logedUser=result.user;
-      console.log(logedUser)
-      updateUserProfile(data.name,data.photoUrl)
-      .then(()=>{
-        const userInfo={
-          name:data.name,
-          email:data.email,
+    signUp(data.email, data.password).then((result) => {
+      const logedUser = result.user;
+      console.log(logedUser);
+      updateUserProfile(data.name, data.photoUrl).then(() => {
+        const userInfo = {
+          name: data.name,
+          email: data.email,
+          seller: data.seller,
+          buyer: data.buyer,
         };
-        axiosPublic.post('/users',userInfo)
-        .then((res)=>{
-          if(res.data.insertedId){
+        axiosPublic.post("/users", userInfo).then((res) => {
+          if (res.data.insertedId) {
             reset();
             Swal.fire({
               position: "top-end",
@@ -38,26 +61,24 @@ const SignUp = () => {
               timer: 1500,
             });
           }
-
         });
-        navigate('/')
-      })
-    })
+        navigate("/");
+      });
+    });
   };
   return (
-    <div
-    
-      className="hero min-h-screen "
-    >
+    <div className="hero min-h-screen ">
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="text-center lg:text-left">
-          <h1 className="text-5xl font-bold font-gabarito text-gray-500">Sign Up</h1>
+          <h1 className="text-5xl font-bold font-gabarito text-gray-500">
+            Sign Up
+          </h1>
           <p className="py-6">
             Unlock the World of AirPods: Join PodReseller Today!
           </p>
         </div>
         <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-          <form   onSubmit={handleSubmit(onSubmitSignUp)} className="card-body">
+          <form onSubmit={handleSubmit(onSubmitSignUp)} className="card-body">
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Name</span>
@@ -93,18 +114,26 @@ const SignUp = () => {
                 className="input input-bordered"
                 required
               />
-             <div className="mt-5 form-control bg-orange-200/70 rounded-md">
-  <div className="flex items-center justify-evenly">
-  <label className="cursor-pointer label">
-    <span className="label-text">Seller</span>
-    <input {...register('seller', {})}  type="checkbox" className="ml-2 checkbox checkbox-secondary" />
-  </label>
-  <label className="cursor-pointer label">
-    <span className="label-text">Buyer</span>
-    <input  type="checkbox"  className="ml-2 checkbox checkbox-secondary" />
-  </label>
-  </div>
-</div>
+              <div className="mt-5 form-control bg-orange-200/70 rounded-md">
+                <div className="flex items-center justify-evenly">
+                  <label className="cursor-pointer label">
+                    <span className="label-text">Seller</span>
+                    <input
+                      {...register("seller", {})}
+                      type="checkbox"
+                      className="ml-2 checkbox checkbox-secondary"
+                    />
+                  </label>
+                  <label className="cursor-pointer label">
+                    <span className="label-text">Buyer</span>
+                    <input
+                      {...register("buyer", {})}
+                      type="checkbox"
+                      className="ml-2 checkbox checkbox-secondary"
+                    />
+                  </label>
+                </div>
+              </div>
             </div>
             <div className="form-control">
               <label className="label">
@@ -119,7 +148,17 @@ const SignUp = () => {
               />
             </div>
             <div className="form-control mt-6">
-              <button className="btn bg-orange-400 hover:bg-orange-500 text-xl text-white">SignUp</button>
+              <button className="btn bg-orange-400 hover:bg-orange-500 text-xl text-white">
+                SignUp
+              </button>
+              <h2 className="mt-1 text-center font-gabarito">OR</h2>
+              <button
+                onClick={() => googleIn()}
+                className="mt-2 btn bg-base-200 hover:bg-base-300 text-xl text-black border-0"
+              >
+                <FcGoogle />
+                Google
+              </button>
             </div>
             <p className="text-xs text-gray-500 mt-3">
               Already Have an Account?{" "}
