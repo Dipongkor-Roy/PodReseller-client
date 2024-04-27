@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import heroimg from '../../../assets/Hero.png'
 const Hero = () => {
   return (
@@ -9,7 +10,7 @@ const Hero = () => {
         </h1>
         <p className="mb-8 font-light leading-relaxed">Discover the ultimate AirPods resale hub! Buy or sell your AirPods hassle-free. Join us today!</p>
         <div className="flex justify-center">
-          <button className="btn btn-md px-16 inline-flex text-white font-figtree font-normal bg-gradient-to-r from-orange-400 to-red-400 bg rounded-xl ">Explore</button>
+          <Link to='/logIn'><button className="btn btn-md px-16 inline-flex text-white font-figtree font-normal bg-gradient-to-r from-orange-400 to-red-400 bg rounded-xl ">Explore</button></Link>
          
         </div>
       </div>
