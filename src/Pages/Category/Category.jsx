@@ -10,7 +10,7 @@ const Category = () => {
   const [products] = useAllProducts();
   const categories = ["Samsung", "Apple", "Xiaomi"];
   const initalIndex = categories.indexOf(category);
-  const [tabIndex, setTabIndex] = useState(initalIndex);
+  const [tabIndex, setTabIndex] = useState(initalIndex && 0);
 
   const samsung = products.filter((item) => item.category === "Samsung");
   const apple = products.filter((item) => item.category === "Apple");
@@ -23,7 +23,7 @@ const Category = () => {
           <Tab>Xiaomi</Tab>
          
         </TabList>
-        <TabPanel >
+        <TabPanel>
       <CategoryDisplayTab item={samsung}></CategoryDisplayTab>
         </TabPanel>
         <TabPanel>

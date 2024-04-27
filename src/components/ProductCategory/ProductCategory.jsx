@@ -1,7 +1,12 @@
 /* eslint-disable react/prop-types */
 
+import { useState } from "react";
 import { FcApproval } from "react-icons/fc";
 const ProductCategory = ({product}) => {
+  const user=useState(true); //todo connect to auth
+  const handleAddtoCart=(product)=>{
+  console.log(product,user)
+  }
     const {category,name,description,image,location,resale_price,years_of_use,seller_name,verified}=product;
     return (
         <div className="lg:w-1/2 md:w-1/2 p-4 w-full">
@@ -15,9 +20,9 @@ const ProductCategory = ({product}) => {
           <h3 className="text-gray-500 text-xs tracking-widest title-font my-1">Location: {location}</h3>
           <h3 className="text-gray-500 text-xs tracking-widest title-font my-1">Used: {years_of_use} year </h3>
           <h3 className="text-gray-500 text-xs tracking-widest title-font my-1">{description.slice(0,20)}</h3>
-          <div className="flex items-center justify-between mt-2">
-          <p className="mt-2 text-md text-[22px] font-semibold ">${resale_price}</p>
-          <button className="btn btn-sm text-gray-500 bg-orange-200 hover:bg-orange-300 border-0">Book Now</button>
+          <div className="flex items-center justify-between mt-3">
+          <p className="text-md text-[22px] font-semibold ">${resale_price}</p>
+          <button onClick={()=>handleAddtoCart(product)} className="btn btn-sm text-gray-500 bg-orange-200 hover:bg-orange-300 border-0">Book Now</button>
           </div>
         </div>
       </div>

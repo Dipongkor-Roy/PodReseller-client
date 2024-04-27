@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import useAllProducts from "../../../Hooks/useAllProducts";
 import Product from "../../../components/Product/Product";
 
@@ -16,7 +17,7 @@ const Products = () => {
           </div>
         </div>
         <div className="text-center py-3 my-[45px]">
-        <button className="btn btn-md rounded-2xl bg-orange-200 text-gray-500">All Products</button>
+     <Link to='/products'>   <button className="btn btn-md rounded-2xl bg-orange-200 text-gray-500 hover:bg-orange-300">All Products</button></Link>
         </div>
       </section>
     );

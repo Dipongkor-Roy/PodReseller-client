@@ -2,8 +2,9 @@ import { Link } from "react-router-dom";
 import logo from "../../assets/logo-base-256x256.png";
 import { useScrollPosition } from "../../Hooks/useScrollPosition";
 
+
 const Navbar = () => {
-  const scrollPos = useScrollPosition();
+const scrollPos=useScrollPosition();
   const navBarDetails = [
     { path: "/", text: "Home" },
     { path: "/products", text: "Products" },
@@ -13,7 +14,7 @@ const Navbar = () => {
   return (
     
       <div
-        className={`navbar rounded-lg bg-base-100 h-16 sticky top-0 z-50 transition-shadow ${
+        className={`navbar bg-base-100 h-16 sticky top-0 z-50 transition-shadow  ${
           scrollPos > 0
             ? "shadow bg-opacity-50 backdrop-blur-lg backdrop-filter"
             : "shadow-none"
