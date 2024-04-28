@@ -141,7 +141,7 @@ const SignUp = () => {
               </label>
               <input
                 {...register("password", { required: true })}
-                type="text"
+                type="password"
                 placeholder="Password"
                 className="input input-bordered"
                 required

@@ -19,7 +19,7 @@ module.exports = {
     
   ],
   daisyui: {
-    themes: ["cupcake", "dark", "bumblebee","cmyk"],
+    themes: ["cupcake", "dark", 'lofi',"bumblebee","cmyk"],
   },
   
 

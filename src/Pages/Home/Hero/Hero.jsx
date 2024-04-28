@@ -1,6 +1,10 @@
 import { Link } from 'react-router-dom';
 import heroimg from '../../../assets/Hero.png'
+import { useContext } from 'react';
+import { AuthContext } from '../../../Context/AuthContext';
+import { FaElementor } from "react-icons/fa";
 const Hero = () => {
+  const {user}=useContext(AuthContext);
   return (
     <section className="body-font inset-0 -z-10 h-full w-full bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] mb-3">
     <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
@@ -10,7 +14,12 @@ const Hero = () => {
         </h1>
         <p className="mb-8 font-light leading-relaxed">Discover the ultimate AirPods resale hub! Buy or sell your AirPods hassle-free. Join us today!</p>
         <div className="flex justify-center">
-          <Link to='/logIn'><button className="btn btn-md px-16 inline-flex text-white font-figtree font-normal bg-gradient-to-r from-orange-400 to-red-400 bg rounded-xl ">Explore</button></Link>
+        {user? <><Link to='/products'><button className="btn btn-md px-16 inline-flex text-white font-figtree font-normal bg-gradient-to-r from-orange-400 to-red-400 bg rounded-xl "><FaElementor className='text-xl' />All Products</button>
+        </Link></>:
+        <> 
+        <Link to='/logIn'><button className="btn btn-md px-16 inline-flex text-white font-figtree font-normal bg-gradient-to-r from-orange-400 to-red-400 bg rounded-xl ">Explore</button></Link>
+        </>
+        }
          
         </div>
       </div>
