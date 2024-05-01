@@ -47,7 +47,7 @@ const MyCart = () => {
         {cart.length ? (
           <Link to="/dashboard/payment">
             {" "}
-            <button className="btn disabled: bg-orange-300 text-xl btn-circle ml-4 font-gabarito font-semibold text-white">
+            <button className="btn disabled: bg-orange-300 hover:bg-orange-400 text-xl btn-circle ml-4 font-gabarito font-semibold text-white">
               Pay
             </button>
           </Link>

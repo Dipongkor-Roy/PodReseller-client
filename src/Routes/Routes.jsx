@@ -8,6 +8,8 @@ import SignUp from "../Pages/SignUp/SignUp";
 import Blog from "../Pages/Blog/Blog";
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import MyCart from "../Pages/Mycart/MyCart";
+import PaymentHistory from "../Pages/PaymentHistory/PaymentHistory";
+import Payment from "../Pages/Payment/Payment";
 
 export const router = createBrowserRouter([
   {
@@ -44,6 +46,14 @@ export const router = createBrowserRouter([
       {
         path:"myCart",
         element:<MyCart/>
+      },
+      {
+        path:'paymentHistory',
+        element:<PaymentHistory/>
+      },
+      {
+        path:'payment',
+        element:<Payment/>
       }
     ]
   }
