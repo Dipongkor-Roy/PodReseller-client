@@ -1,6 +1,6 @@
 import { Link, NavLink, Outlet } from "react-router-dom";
 import { useState } from "react";
-import { FaPlusCircle, FaRegEdit, FaShoppingCart, FaUserCheck, FaUsers } from "react-icons/fa";
+import { FaPlusCircle, FaShoppingCart, FaUserCheck, FaUsers } from "react-icons/fa";
 import { MdOutlinePayment } from "react-icons/md";
 
 
@@ -34,14 +34,17 @@ const svg=<svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.o
         {isAdmin ? (
     <>
       <Link to='/dashboard/adminHome'><li><a><FaUserCheck />Admin Home</a></li></Link>
-      <Link to='/dashboard/addServices'><li><a><FaPlusCircle />Add Services</a></li></Link>
-      <Link to='/dashboard/manageServices'><li><a><FaRegEdit />Manage Services</a></li></Link>
-      <Link to='/dashboard/allUsers'><li><a><FaUsers /> All Users</a></li></Link>
+      <Link to='/dashboard/allUsers'><li><a><FaUsers /> All Sellers</a></li></Link>
+      <Link to='/dashboard/allUsers'><li><a><FaUsers /> All Buyers</a></li></Link>
+      <li><NavLink to='/dashboard/reportedItems'><MdOutlinePayment />Reported Items</NavLink></li>
     </>
   ) : (
     <>
-      {isSeller ? (
+      {isSeller ? (<>
         <h3>Seller</h3>
+        <Link to='/dashboard/addProduct'><li><a><FaPlusCircle />Add Product</a></li></Link>
+        <Link to='/dashboard/addProduct'><li><a><FaPlusCircle />My Products</a></li></Link>
+        </>
       ) : (
         <>
           {/* <li><NavLink to='/dashboard/userHome'><FaHome />User Home</NavLink></li> */}

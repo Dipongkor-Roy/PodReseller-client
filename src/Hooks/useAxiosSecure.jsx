@@ -1,7 +1,8 @@
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../Providers/AuthCont";
+
 import { useContext } from "react";
+import { AuthContext } from "../Context/AuthContext";
 
 const axiosSecure = axios.create({
     baseURL: 'https://motionmaster-server.vercel.app/'
