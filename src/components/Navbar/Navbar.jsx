@@ -26,7 +26,7 @@ const [cart] = useCart();
       <div
         className={`navbar bg-base-100 h-16 sticky top-0 z-50 transition-shadow  ${
           scrollPos > 0
-            ? "shadow bg-opacity-50 backdrop-blur-lg backdrop-filter"
+            ? "shadow bg-opacity-50 backdrop-blur-lg backdrop-filter rounded-lg"
             : "shadow-none"
         }`}
       >

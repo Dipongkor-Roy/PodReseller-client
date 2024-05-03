@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { AuthContext } from "../Context/AuthContext";
 
 const axiosSecure = axios.create({
-    baseURL: 'https://motionmaster-server.vercel.app/'
+    baseURL: 'http://localhost:3000',
 })
 const useAxiosSecure = () => {
     const navigate = useNavigate();

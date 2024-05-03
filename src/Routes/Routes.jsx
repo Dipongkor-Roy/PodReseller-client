@@ -10,6 +10,9 @@ import Dashboard from "../Pages/Dashboard/Dashboard";
 import MyCart from "../Pages/Mycart/MyCart";
 import PaymentHistory from "../Pages/PaymentHistory/PaymentHistory";
 import Payment from "../Pages/Payment/Payment";
+import AllUsers from "../Pages/AllUsers/AllUsers";
+import AdminHome from "../Pages/AdminHome/AdminHome";
+import NotFound from "../Pages/404/NotFound";
 
 export const router = createBrowserRouter([
   {
@@ -40,6 +43,10 @@ export const router = createBrowserRouter([
    
   },
   {
+path:'*',
+element:<NotFound/>
+  },
+  {
     path:'dashboard',
     element:<Dashboard/>,
     children:[
@@ -48,12 +55,21 @@ export const router = createBrowserRouter([
         element:<MyCart/>
       },
       {
+        path:'allusers',
+        element:<AllUsers/>
+      },
+      {
         path:'paymentHistory',
         element:<PaymentHistory/>
       },
       {
         path:'payment',
         element:<Payment/>
+      },
+      //admin
+      {
+        path:'adminHome',
+        element:<AdminHome/>
       }
     ]
   }

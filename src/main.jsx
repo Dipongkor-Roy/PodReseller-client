@@ -9,7 +9,7 @@ import AuthCont from "./Context/AuthContext.jsx";
 const queryClient = new QueryClient();
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <div className="max-w-screen-lg mx-auto overflow-hidden">
+    <div className="max-w-screen-lg mx-auto">
       <QueryClientProvider client={queryClient}>
        <AuthCont><RouterProvider router={router} /></AuthCont>
       </QueryClientProvider>
