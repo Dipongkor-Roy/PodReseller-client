@@ -13,6 +13,9 @@ import Payment from "../Pages/Payment/Payment";
 import AllUsers from "../Pages/AllUsers/AllUsers";
 import AdminHome from "../Pages/AdminHome/AdminHome";
 import NotFound from "../Pages/404/NotFound";
+import AddProduct from "../Pages/AddProduct/AddProduct";
+import SellerProducts from "../Pages/SellerProduct/SellerProducts";
+import EditProducts from "../Pages/EditProducts/EditProducts";
 
 export const router = createBrowserRouter([
   {
@@ -70,6 +73,22 @@ element:<NotFound/>
       {
         path:'adminHome',
         element:<AdminHome/>
+      },
+      //seller
+      {
+        path:"addProduct",
+        element:<AddProduct/>
+        
+      },
+      {
+        path:'myProducts',
+        element:<SellerProducts/>
+      },
+      {
+        path:'updateProduct/:id',
+        element:<EditProducts/>,
+       
+      
       }
     ]
   }
