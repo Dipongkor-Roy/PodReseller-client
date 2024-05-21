@@ -10,7 +10,7 @@ const AddProduct = () => {
   const { register, handleSubmit, reset } = useForm();
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
-  console.log(user)
+  // console.log(user)
   const onSubmit = async (data) => {
     try {
       const formData = new FormData();
@@ -61,7 +61,7 @@ const AddProduct = () => {
   return (
     <div>
       <h3 className="my-2 text-center text-white font-semibold rounded-md bg-orange-400">
-        Welcome Back {user?.name || "Hero"}
+        Welcome Back {user?.displayName || "Hero"}
       </h3>
       <h5 className="sm:text-3xl font-gabarito title-font  text-gray-500/70 text-center font-extrabold text-4xl md:text-5xl tracking-tight ">
         Add Products

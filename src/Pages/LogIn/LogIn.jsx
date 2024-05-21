@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthContext";
@@ -50,13 +51,13 @@ const LogIn = () => {
     });
   };
   const onSubmitLogIn = (data) => {
-    console.log(data);
+
     const email = data.email;
     const password = data.password;
     logIn(email, password)
     .then((result) => {
       const user = result.user;
-      console.log(user);
+
       Toast.fire({
         icon: "success",
         title: "Log in successfully",
