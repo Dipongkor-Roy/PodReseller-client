@@ -1,41 +1,26 @@
 
-import { useEffect, useState } from "react";
+
 import useAuth from "../../Hooks/useAuth";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLoaderData, useNavigate, } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import { FaPlusCircle } from "react-icons/fa";
 
+
 const imageApiKey = import.meta.env.VITE_image_apikey;
 
 const imageHostingApi = `https://api.imgbb.com/1/upload?key=${imageApiKey}`;
 const EditProducts = () => {
-    const [product,setProduct]=useState(null)
+  
+    const product = useLoaderData();
     const {user}=useAuth();
     const navigate = useNavigate();
-    const { id } = useParams();
-    console.log(id)
+console.log(product)
+    const { _id, name, resale_price, description } = product;
+    console.log( _id, name, resale_price, description)
   
-    useEffect(() => {
-        const fetchProduct = async () => {
-            try {
-                const response = await fetch(`http://localhost:3000/products/${id}`);
-                if (!response.ok) {
-                    throw new Error('Failed to fetch product');
-                }
-                const data = await response.json();
-                setProduct(data);
-            } catch (error) {
-                console.error('Error fetching product:', error);
-            }
-        };
-
-        fetchProduct();
-    }, [id]);
- console.log(product)
-
 const { register, handleSubmit, reset } = useForm();
   const axiosPublic = useAxiosPublic();
   const axiosSecure = useAxiosSecure();

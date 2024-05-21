@@ -11,7 +11,7 @@ const SellerProducts = () => {
 const axiosSecure=useAxiosSecure();
 const [,refetch]=useAllProducts();
 const {user}=useAuth();
-const sellerName=user?.name || 'Alex Johnson'; 
+const sellerName=user?.displayName || 'Alex Johnson'; 
 
 
     const [products,setProducts]=useState([])

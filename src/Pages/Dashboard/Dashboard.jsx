@@ -36,6 +36,7 @@ const svg=<svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.o
       <Link to='/dashboard/adminHome'><li><a><FaUserCheck />Admin Home</a></li></Link>
       
       <Link to='/dashboard/allUsers'><li><a><FaUsers /> All Users</a></li></Link>
+      <Link to='/dashboard/allProducts'><li><a><FaProductHunt /> All Products</a></li></Link>
       <li><NavLink to='/dashboard/reportedItems'><MdOutlinePayment />Reported Items</NavLink></li>
     </>
   ) : (

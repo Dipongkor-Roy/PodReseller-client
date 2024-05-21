@@ -16,6 +16,7 @@ import NotFound from "../Pages/404/NotFound";
 import AddProduct from "../Pages/AddProduct/AddProduct";
 import SellerProducts from "../Pages/SellerProduct/SellerProducts";
 import EditProducts from "../Pages/EditProducts/EditProducts";
+import AllProductShow from "../Pages/AllProductShow/AllProductShow";
 
 export const router = createBrowserRouter([
   {
@@ -74,6 +75,10 @@ element:<NotFound/>
         path:'adminHome',
         element:<AdminHome/>
       },
+      {
+        path:'allProducts',
+        element:<AllProductShow/>
+      },
       //seller
       {
         path:"addProduct",
@@ -87,9 +92,10 @@ element:<NotFound/>
       {
         path:'updateProduct/:id',
         element:<EditProducts/>,
+        loader:({params})=>fetch(`http://localhost:3000/products/${params.id}`)
        
-      
-      }
+      },
+     
     ]
   }
 ]);
