@@ -16,7 +16,7 @@ PodReseller is a platform where sellers can post their used AirPods or AirBuds, 
 
 ## Live Demo [Visit]
 
-
+https://pod-reseller-client.vercel.app/
 
 
 ## Features
