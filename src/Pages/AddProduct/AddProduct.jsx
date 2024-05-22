@@ -26,6 +26,7 @@ const AddProduct = () => {
         if (responseData.data && responseData.data.display_url) {
           const productItem = {
             name: data.name,
+            category:data.category,
             seller_name: user?.displayName || 'Unknown',
             description: data.description,
             years_of_use:data.used,
@@ -70,7 +71,7 @@ const AddProduct = () => {
         <div className="flex items-center justify-center mb-5"></div>
         <div className="flex items-center justify-center ">
           <form onSubmit={handleSubmit(onSubmit)}>
-            <label className="form-control w-full my-5">
+            <label className="form-control w-full mt-5">
               <div className="label">
                 <span className="label-text">Product Name*</span>
               </div>
@@ -111,7 +112,20 @@ const AddProduct = () => {
             <div className="flex gap-6">
               <label className="form-control w-full">
                 <div className="label">
-                  <span className="label-text">Year of Use</span>
+                  <span className="label-text">Category*</span>
+                </div>
+                <input
+                  {...register("category", { required: true })}
+                  type="text"
+                  placeholder="Category"
+                  className="input input-bordered w-full"
+                />
+              </label>
+            </div>
+            <div className="flex gap-6">
+              <label className="form-control w-full">
+                <div className="label">
+                  <span className="label-text">Year of Use*</span>
                 </div>
                 <input
                   {...register("used", { required: true })}

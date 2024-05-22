@@ -95,8 +95,6 @@ element:<NotFound/>
       {
         path:'updateProduct/:id',
         element:<EditProducts/>
-        
-       
       }
   
     ]

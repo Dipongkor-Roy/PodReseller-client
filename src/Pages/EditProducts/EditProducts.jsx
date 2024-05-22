@@ -2,34 +2,37 @@
 
 
 import useAuth from "../../Hooks/useAuth";
-import {  useNavigate, useParams, } from "react-router-dom";
+import { useNavigate, useParams, } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import { FaPlusCircle } from "react-icons/fa";
 import { useEffect, useState } from "react";
-import axios from "axios";
+
+
 
 
 const imageApiKey = import.meta.env.VITE_image_apikey;
 
 const imageHostingApi = `https://api.imgbb.com/1/upload?key=${imageApiKey}`;
 const EditProducts = () => {
+  
   const [product, setProduct] = useState(null);
   const [error, setError] = useState(null);
+ 
 
   const { id } = useParams();
-
+ 
     const {user}=useAuth();
     const navigate = useNavigate();
-// console.log(product)
+ console.log(id)
     
 
     useEffect(() => {
       const fetchProduct = async () => {
         try {
-          const response = await axios.get(`http://localhost:3000/products/${id}`);
+          const response = await axiosPublic.get(`http://localhost:3000/products/${id}`);
           setProduct(response.data);
         } catch (error) {
           setError('Product not found or server error');
