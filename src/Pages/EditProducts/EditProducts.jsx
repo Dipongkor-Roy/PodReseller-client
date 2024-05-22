@@ -32,7 +32,7 @@ const EditProducts = () => {
     useEffect(() => {
       const fetchProduct = async () => {
         try {
-          const response = await axiosPublic.get(`http://localhost:3000/products/${id}`);
+          const response = await axiosPublic.get(`https://pod-reseller-server.vercel.app/products/${id}`);
           setProduct(response.data);
         } catch (error) {
           setError('Product not found or server error');

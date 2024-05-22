@@ -4,7 +4,7 @@ import { useContext, useEffect } from "react";
 import { AuthContext } from "../Context/AuthContext";
 
 const axiosSecure = axios.create({
-    baseURL: 'http://localhost:3000',
+    baseURL: 'https://pod-reseller-server.vercel.app',
 });
 
 const useAxiosSecure = () => {

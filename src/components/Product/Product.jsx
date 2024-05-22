@@ -53,7 +53,7 @@ const Product = ({ product }) => {
         email: user.email
       };
 
-      fetch('http://localhost:3000/carts', {
+      fetch('https://pod-reseller-server.vercel.app/carts', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
