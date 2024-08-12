@@ -2,9 +2,9 @@
 
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
-import img1 from "../../../assets/banner1.png";
-import img2 from "../../../assets/banner2.png";
-import img3 from "../../../assets/banner3.png";
+import img1 from "../../../assets/banner1.webp";
+import img2 from "../../../assets/banner2.webp";
+import img3 from "../../../assets/banner3.webp";
 const Slider = () => {
   
   return (
